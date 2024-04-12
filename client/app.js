@@ -1,9 +1,15 @@
-const form = document.getElementById("messageform");
+const messagesContainer = document.getElementById('messages');
+const messageInput = document.getElementById('message-input');
 
-function handleSubmit(event) {
-    event.preventDefault();
-    const username = event.target.username.value;
-    const message = event.target.message.value;
+
+
+function addMessage() {
+    const message = messageInput.value;
+    if (message.trim() !== '') {
+        const messageElement = document.createElement('div');
+        messageElement.textContent = message;
+        messagesContainer.appendChild(messageElement);
+        messageInput.value = '';
 
     console.log({ username: username, message: message });
 
@@ -17,3 +23,4 @@ function handleSubmit(event) {
 }
 
 form.addEventListener("submit", handleSubmit);
+}
