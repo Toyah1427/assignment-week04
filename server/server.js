@@ -25,13 +25,18 @@ app.get("/bgclasses", function (request, response) {
 
 
 app.get("/comments", function (request, response) {
+    try {
     console.log(request.query);
     console.log("Loading user comments...");
     const comments = db
     .prepare(`SELECT * FROM comments WHERE name = ${request.query.id}`)
     .all();
+    } catch (error) {
+        response.json(error);
+
+    }
     console.log(comments);
-    response.json(comments);
+   //response.json(comments);
 });
 
 
