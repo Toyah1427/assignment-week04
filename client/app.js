@@ -1,20 +1,86 @@
-const form = document.getElementById("messageform");
 
-function handleSubmit(event) {
-  event.preventDefault();
-  const username = event.target.username.value;
-  const message = event.target.message.value;
+var getData = [];
+var usersList = [];
 
-  console.log({ username: username, message: message });
-
-  // make a request to the server with our form data as the body
-  fetch("http://localhost:8080/message", {
-    method: "POST",
-    body: JSON.stringify({ username: username, message: message }),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+function status(response) {
+//Check Promise
+if (response.status >= 200 && response.status < 300) {
+  return Promise.resolve(response)
+} else {
+  return Promise.reject(new Error(response.statusText))
+}
 }
 
-form.addEventListener("submit", handleSubmit);
+function json(response) {
+//Return JSON format
+return response.json()
+}
+
+function getUsers(){
+
+fetch('https://jsonplaceholder.typicode.com/users')
+.then(status)
+.then(json)
+.then(function(dataList) {
+  usersList = dataList;    
+  dataList.forEach(function(data){
+    $('#selUser').append($('<option>', { 
+      value: data.id,
+      text : data.name 
+  }));
+    
+  });
+  getPosts("");
+  
+  
+})
+.catch(function(error) {
+  console.log('Fetch User Error :-S', error);
+});
+
+}
+
+function getPosts(option){
+
+fetch('https://jsonplaceholder.typicode.com/posts' + option)
+.then(status)
+.then(json)
+.then(function(dataList) {
+  getData = dataList;
+  var divReply = $(".reply")
+  divReply.empty();
+  
+  dataList.forEach(function(data){
+    var post = $('<p class="post"/>');
+    
+    var divID = $('<div class="userName"/>').append($('<span>').append('By: ', usersList[data.userId - 1].name));    
+    var divTitle = $('<div class="title"/>').append(data.title);
+    var divBody = $('<div class="body"/>').append(data.body)
+    
+    divReply.append(post.append(divID,divTitle,divBody));
+    
+  });
+  
+})
+.catch(function(error) {
+  console.log('Fetch Post Error :-S', error);
+});
+}
+
+
+
+$(document).ready(function() {
+//Get Post On Document Ready
+getUsers();
+})
+
+function searchUser(){
+var userSelected = $('#selUser').val();
+
+if (userSelected != 0){
+  getPosts("?userId=" + userSelected);
+}
+else{
+  getPosts("");
+}
+}

@@ -9,14 +9,26 @@
 <body>
     <h1>The best Baldur's Gate 3 classes</h1>
     <h2>Don't forget to submit your own</h2>
-    <form id="messageform">
-        <label>Username</label>
-        <input name="username" placeholder="Username" />
-  
-        <label>Message</label>
-        <textarea name="message" placeholder="Your Message"></textarea>
-        <button>Submit</button>
-      </form>
+    <div class="wrap"> 
+        <div>
+          <h1 class="title"> Filters </h1>
+          
+          <div class="byUser">
+            <span class="title">All post by User : </span>
+            <select id="selUser">
+              <option value=0>All</option>
+            </select>
+            <button type="button" onclick="searchUser()">Search </button>
+          </div>
+        </div>
+        
+        </div>
+        
+        <div class="wrap">
+          <div><h1 class="title">Posts</h1></div>
+          <p class="reply">
+          </p>
+        </div>
 
 
 </body>
