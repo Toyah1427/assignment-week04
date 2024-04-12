@@ -11,16 +11,6 @@ function addMessage() {
         messagesContainer.appendChild(messageElement);
         messageInput.value = '';
 
-    console.log({ username: username, message: message });
 
-    fetch("http://localhost:3000/message", {
-        method: "POST",
-        body: JSON.stringify({ username: username, message: message }),
-        headers: {
-            "Content-Type": "application/json",
-        },
-    });
-}
-
-form.addEventListener("submit", handleSubmit);
-}
+    }
+    }
