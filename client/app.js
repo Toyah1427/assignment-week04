@@ -8,7 +8,7 @@ const message = event.target.message.value;
 console.log({ username: username, message: message });
 
 
-fetch("http://localhost:8080/message", {
+fetch("http://localhost:3000/message", {
     method: "POST",
     body: JSON.stringify({ username: username, message: message }),
     headers: {

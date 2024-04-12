@@ -16,6 +16,7 @@ app.get("/", function (request, response) {
     response.json("Youre looking at my root");
 });
 
+//this needs fixing?
 app.get("/bgclasses", function (request, response) {
     console.log("Showing BG3 classes");
     const bgClasses = db.prepare("SELECT * FROM classes").all();
