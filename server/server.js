@@ -24,15 +24,18 @@ app.get("/bgclasses", function (request, response) {
 });
 
 
+
+
+
 app.get("/comments", function (request, response) {
     try {
     console.log(request.query);
     console.log("Loading user comments...");
     const comments = db
-    .prepare(`SELECT * FROM comments WHERE name = "${request.query.id}"`)
+    .prepare(`SELECT * FROM comments WHERE username = "${request.query.id}"`)
     .all();
     } catch (error) {
-        response.json(error+" where name = "+ request.query.id);
+        response.json(error+" where username = "+ request.query.id);
 
     }
     console.log(comments);
@@ -43,13 +46,14 @@ app.get("/comments", function (request, response) {
 app.post("/comments", function (request, response) {
     console.log(request.body);
     response.json(request.body);
+    console.log("Making comments");
     
     const addtNewComment = db.prepare(`
-    INSERT INTO comments (name, comment) VALUES (?, ?)
+    INSERT INTO comments (username, comment) VALUES (?, ?)
     `);
 
     addNewComment.run(
-        request.body.name,
+        request.body.username,
         request.body.comment
     );
     if (err) {
