@@ -9,11 +9,14 @@
 <body>
     <h1>The best Baldur's Gate 3 classes</h1>
     <h2>Don't forget to submit your own</h2>
-    <div id="message-board">
-        <input type="text" id="message-input" placeholder="Enter your message">
-        <button onclick="addMessage()">Add Message</button>
-        <div id="messages"></div>
-    </div>
+    <form id="messageform">
+        <label>Username</label>
+        <input name="username" placeholder="Username" />
+  
+        <label>Message</label>
+        <textarea name="message" placeholder="Your Message"></textarea>
+        <button>Submit</button>
+      </form>
 
 
 </body>

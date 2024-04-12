@@ -1,21 +1,20 @@
-const messagesContainer = document.getElementById('messages');
-const messageInput = document.getElementById('message-input');
-const addButton = document.getElementById('add-button');
+const form = document.getElementById("messageform");
 
+function handleSubmit(event) {
+  event.preventDefault();
+  const username = event.target.username.value;
+  const message = event.target.message.value;
 
-document.addEventListener('DOMContentLoaded', function() {
+  console.log({ username: username, message: message });
 
+  // make a request to the server with our form data as the body
+  fetch("http://localhost:8080/message", {
+    method: "POST",
+    body: JSON.stringify({ username: username, message: message }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+}
 
-
-function addMessage() {
-    const message = messageInput.value;
-    if (message.trim() !== '') {
-        const messageElement = document.createElement('div');
-        messageElement.textContent = message;
-        messagesContainer.appendChild(messageElement);
-        messageInput.value = '';
-
-
-    }
-    }
-});
+form.addEventListener("submit", handleSubmit);

@@ -1,4 +1,6 @@
-#message-board {
-    width: 300px;
-    margin: 0 auto;
-}
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 500px;
+  }
