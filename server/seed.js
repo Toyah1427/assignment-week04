@@ -79,13 +79,13 @@ insertBGClasses.run(
 db.exec(`
 CREATE TABLE IF NOT EXISTS comments (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT,
+    username TEXT,
     comment TEXT
 )
 `);
 
 const populateComments = db.prepare(`
-INSERT INTO comments (name, comment) VALUES (?, ?)
+INSERT INTO comments (username, comment) VALUES (?, ?)
 `);
 
 populateComments.run(
