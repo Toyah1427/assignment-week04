@@ -1,7 +1,7 @@
 const messagesContainer = document.getElementById('messages');
 const messageInput = document.getElementById('message-input');
 const addButton = document.getElementById('add-button');
-addButton.addEventListener('click', addMessage);
+
 
 document.addEventListener('DOMContentLoaded', function() {
 
