@@ -4,15 +4,15 @@ const db = new Database("database.db");
 db.exec(`
 CREATE TABLE IF NOT EXISTS bgclasses (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    class TEXT NOT NULL UNIGUE,
+    class TEXT,
     description TEXT,
-    primary-ability TEXT
+    primary_ability TEXT
 )
 `);
 
 //populate class table
 const insertBGClasses = db.prepare(`
-INSERT INTO bgclasses (class, description, primary-ability) VALUES (?, ?, ?)
+INSERT INTO bgclasses (class, description, primary_ability) VALUES (?, ?, ?)
 `);
 
 insertBGClasses.run(
@@ -74,4 +74,29 @@ insertBGClasses.run(
     "Wizard",
     "A scholarly magic user capable of manipulating the structures of reality",
     "Intelligence"
+);
+
+db.exec(`
+CREATE TABLE IF NOT EXISTS comments (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT,
+    comment TEXT
+)
+`);
+
+const populateComments = db.prepare(`
+INSERT INTO comments (name, comment) VALUES (?, ?)
+`);
+
+populateComments.run(
+    "SuperPickle",
+    "Sorcerer!! Because I've got the charisma!!"
+);
+populateComments.run(
+    "Crumpet",
+    "Barb and bard of course"
+);
+populateComments.run(
+    "FuzzyWorm",
+    "It's going to have to be a Rouge, fits my personality"
 );
