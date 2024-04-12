@@ -29,7 +29,7 @@ app.get("/comments", function (request, response) {
     console.log(request.query);
     console.log("Loading user comments...");
     const comments = db
-    .prepare(`SELECT * FROM comments WHERE name = ${request.query.id}`)
+    .prepare(`SELECT * FROM comments WHERE name = "${request.query.id}"`)
     .all();
     } catch (error) {
         response.json(error+" where name = "+ request.query.id);
