@@ -32,7 +32,7 @@ app.get("/comments", function (request, response) {
     .prepare(`SELECT * FROM comments WHERE name = ${request.query.id}`)
     .all();
     } catch (error) {
-        response.json(error);
+        response.json(error+" where name = "+ request.query.id);
 
     }
     console.log(comments);
