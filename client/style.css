@@ -4,3 +4,51 @@ form {
     gap: 16px;
     width: 500px;
   }
+
+
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #080000;
+}
+
+h1 {
+    color:#9e6805;
+    text-align: center;
+}
+
+h2 {
+    color:#9e6805;
+    text-align: center;
+    text-decoration: underline;
+}
+
+.bg3 {
+    display: flex;
+    justify-content: center;
+    font-family:Arial, Helvetica, sans-serif;
+    color: goldenrod;
+}
+
+.messageform {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #070000;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(202, 141, 26, 0.788);
+}
+
+
+button {
+    background-color: #9e6805;
+    color: #070606;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #b30c00;
+}
+
